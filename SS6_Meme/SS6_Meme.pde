@@ -4,6 +4,8 @@ PImage f1, f2, f3;
 PImage s1, s2, s3;
 PImage bg;
 
+float frames = 0;
+
 void setup() {
   size(800, 440);
   
@@ -22,6 +24,11 @@ void draw() {
   PImage s[] = {s1, s2, s3};
   
   background(bg);
-  image(f[0], 0, 0);
-  image(s[0], 0, 0);
+  animate(s);
+  animate(f);
+}
+
+void animate(PImage arr[]) {
+  frames += 0.10;
+  image(arr[(int)Math.floor(frames) % arr.length], 0, 0);
 }
