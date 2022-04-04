@@ -1,3 +1,6 @@
+// Forrest Gump game by Alyona Radkevich
+// Play the scketch and follow the instructions within the game
+
 String scene = "loading";
 String failedLevel;
 String finishedLevel;
