@@ -12,12 +12,22 @@ void loop() {
   buttonState = digitalRead(button);
   delay(10);
   if(buttonState == HIGH){
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i+=2) {
         digitalWrite(LEDs[i], HIGH);
         delay(100);
         digitalWrite(LEDs[i], LOW);
     }
-    for (int i = 6; i > 0; i--) {
+    for (int i = 1; i < 8; i+=2) {
+        digitalWrite(LEDs[i], HIGH);
+        delay(100);
+        digitalWrite(LEDs[i], LOW);
+    }
+    for (int i = 6; i > 0; i-=2) {
+        digitalWrite(LEDs[i], HIGH);
+        delay(100);
+        digitalWrite(LEDs[i], LOW);
+    }
+    for (int i = 7; i > 0; i-=2) {
         digitalWrite(LEDs[i], HIGH);
         delay(100);
         digitalWrite(LEDs[i], LOW);
