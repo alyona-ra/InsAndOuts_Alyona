@@ -52,8 +52,8 @@ void setup() {
 }
 
 void draw() {
-  if ( myPort.available() > 0) { // If data is available,
-    potValue = myPort.read(); // read it and store it in val
+  if ( myPort.available() > 0) {
+    potValue = myPort.read();
   }
   noStroke();
 
@@ -103,23 +103,6 @@ void drawLandscape(color bg, color moon1, color moon2, color moon3, color fieldL
   fill(moon1);
   circle(moonX, moonYPos, moonSize);
   
-  
-  //if (potValue < 130) {
-  //  fill(moon3);
-  //  circle(moonX, moonY+potValue, 1.5 * moonSize);
-  //  fill(moon2);
-  //  circle(moonX, moonY+potValue, 1.25 * moonSize);
-  //  fill(moon1);
-  //  circle(moonX, moonY+potValue, moonSize);
-  //} else if (potValue <= 255) {
-  //  fill(moon3);
-  //  circle(moonX, moonY-potValue, 1.5 * moonSize);
-  //  fill(moon2);
-  //  circle(moonX, moonY-potValue, 1.25 * moonSize);
-  //  fill(moon1);
-  //  circle(moonX, moonY-potValue, moonSize);
-  //}
-  
   //fields
   fill(fieldLeft);
   ellipse(width / 20, height, fieldLeftW, fieldLeftH);
@@ -159,11 +142,6 @@ void drawLandscape(color bg, color moon1, color moon2, color moon3, color fieldL
         speed = width;
       }
     }
-    //speed += 2;
-    
-    //if (speed > width) {
-    //  speed = -width;
-    //}
   }
   
   //trees (top)
