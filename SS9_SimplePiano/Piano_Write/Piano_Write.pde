@@ -50,43 +50,43 @@ void draw() {
   pressed = false;
   
   if (keyPressed) {
-    if (key == 's') {
+    if (key == 's' || key == 'S') {
       pressed = true;
       currentKey = "C";
-    } else if (key == 'e') {
+    } else if (key == 'e' || key == 'E') {
       pressed = true;
       currentKey = "C#";
-    } else if (key == 'd') {
+    } else if (key == 'd' || key == 'D') {
       pressed = true;
       currentKey = "D";
-    } else if (key == 'r') {
+    } else if (key == 'r' || key == 'R') {
       pressed = true;
       currentKey = "D#";
-    } else if (key == 'f') {
+    } else if (key == 'f' || key == 'F') {
       pressed = true;
       currentKey = "E";
-    } else if (key == 'g') {
+    } else if (key == 'g' || key == 'G') {
       pressed = true;
       currentKey = "F";
-    } else if (key == 'y') {
+    } else if (key == 'y' || key == 'Y') {
       pressed = true;
       currentKey = "F#";
-    } else if (key == 'h') {
+    } else if (key == 'h' || key == 'H') {
       pressed = true;
       currentKey = "G";
-    } else if (key == 'u') {
+    } else if (key == 'u' || key == 'U') {
       pressed = true;
       currentKey = "G#";
-    } else if (key == 'j') {
+    } else if (key == 'j' || key == 'J') {
       pressed = true;
       currentKey = "A";
-    } else if (key == 'i') {
+    } else if (key == 'i' || key == 'I') {
       pressed = true;
       currentKey = "Bb";
-    } else if (key == 'k') {
+    } else if (key == 'k' || key == 'K') {
       pressed = true;
       currentKey = "B";
-    } else if (key == 'l') {
+    } else if (key == 'l' || key == 'L') {
       pressed = true;
       currentKey = "C2";
     }  
