@@ -4,13 +4,13 @@ import processing.sound.*;
 byte val = 0;
 int valR;
 
-int whiteKeyW = 50;
-int whiteKeyH = 150;
+int whiteKeyW = 150;
+int whiteKeyH = 550;
 int whiteKeyX;
 int whiteKeyY;
 
-int blackKeyW = 25;
-int blackKeyH = 75;
+int blackKeyW = whiteKeyW/2;
+int blackKeyH = whiteKeyH/2;
 int blackKeyX;
 int blackKeyY;
 
@@ -21,6 +21,7 @@ String whiteKeys[] = {"C", "D", "E", "F", "G", "A", "B", "C2"};
 String blackKeys[] = {"C#", "D#", "F#", "G#", "Bb"};
 String whiteKeysKeys[] = {"S", "D", "F", "G", "H", "J", "K", "L"};
 String blackKeysKeys[] = {"E", "R", "Y", "U", "I"};
+String allKeys[] = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#",  "A", "Bb", "B", "C2"};
 
 String currentKey;
 String lastKey;
@@ -33,6 +34,7 @@ color keyColor;
 color fontColor;
 
 String mode = "keys";
+String randomKey;
 
 SoundFile playKey;
 SoundFile C;
@@ -53,7 +55,7 @@ Serial myPort;
 
 void setup() {
   frameRate(10);
-  size(800, 500); 
+  size(displayWidth, displayHeight); 
   textAlign(CENTER);
   
   C = new SoundFile(this, "C.mp3");
@@ -69,6 +71,8 @@ void setup() {
   Bb = new SoundFile(this, "Bb.mp3");
   B = new SoundFile(this, "B.mp3");
   C2 = new SoundFile(this, "C2.mp3");
+  
+  randomKey = allKeys[(int)random(0, 13)];
 
   //printArray(Serial.list());
   String portName = Serial.list()[5];
@@ -110,6 +114,28 @@ void mousePressed() {
 
 void modeKeys() {
   pressed = false;
+  
+  fill(#F91EFA);
+  textSize(42);
+  text("Play: " + randomKey, width/2, 50);
+  
+  if (currentKey == randomKey) {
+    randomKey = allKeys[(int)random(0, 13)];
+  }
+  
+  if (valR == 1) {
+    pressed = true;
+    currentKey = "C";
+    C.play();
+    valR = 0;
+  } else if (valR == 2) {
+    pressed = true;
+    currentKey = "D";
+    D.play();
+    valR = 0;
+  } else if (valR == 0) {
+    //C.stop();
+  }
   
   if (keyPressed) {
     if (key == 's' || key == 'S') {
@@ -168,13 +194,19 @@ void modeKeys() {
     }
     
     if (pressed && currentKey == whiteKeys[i]) {
-      keyColor = #FFF4A2;
+      if (currentKey == randomKey) {
+        keyColor = #00FF00;
+      } else if (currentKey != randomKey) {
+        keyColor = #FF0000;
+      }
+      //keyColor = #FFF4A2;
       fontColor = #FF8E03;
     } else {
       keyColor = #FFFFFF;
       fontColor = #000000;
     }
     
+    textSize(12);
     stroke(0);
     fill(keyColor);
     rect(whiteKeyX, whiteKeyY, whiteKeyW, whiteKeyH);
@@ -195,13 +227,18 @@ void modeKeys() {
     }
     
     if (pressed && currentKey == blackKeys[i]) {
-      keyColor = #FFF4A2;
+      if (currentKey == randomKey) {
+        keyColor = #00FF00;
+      } else if (currentKey != randomKey) {
+        keyColor = #FF0000;
+      }
       fontColor = #FF8E03;
     } else {
       keyColor = #000000;
       fontColor = #FFFFFF;
     }
     
+    textSize(12);
     stroke(0);
     fill(keyColor);
     rect(blackKeyX, blackKeyY, blackKeyW, blackKeyH);
@@ -230,7 +267,7 @@ void modeKeys() {
   } else if ((currentKey == "D" && currentKey != lastKey)) {
     val = 3;
     //myPort.write(val);
-    D.play();
+    //D.play();
   } else if ((currentKey == "D#" && currentKey != lastKey)) {
     val = 4;
     //myPort.write(val);
@@ -274,13 +311,6 @@ void modeKeys() {
   } else if (currentKey == null && currentKey != lastKey) {
     val = 0;
     //myPort.write(val);
-  }
-  
-  if (valR == 1) {
-    C.play();
-    valR = 0;
-  } else if (valR == 0) {
-    //C.stop();
   }
   
   println("valR:", valR);
