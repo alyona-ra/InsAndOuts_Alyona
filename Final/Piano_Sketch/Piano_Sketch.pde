@@ -1,3 +1,6 @@
+// Mini Piano Simulator by Alyona Radkevich
+// Play the same key on the physical piano as the one you see on the screen
+
 import processing.serial.*;
 import processing.sound.*;
 
@@ -19,7 +22,7 @@ int blackKeysNum = 5;
 
 String whiteKeys[] = {"C", "D", "E", "F", "G", "A", "B", "C2"};
 String blackKeys[] = {"C#", "D#", "F#", "G#", "Bb"};
-String allKeys[] = {"C", "D", "E", "F", "G",  "B"};
+String allKeys[] = {"C", "D", "E", "F", "G", "A", "B", "C2"};
 
 String currentKey;
 String lastKey;
@@ -75,7 +78,7 @@ void setup() {
   B = new SoundFile(this, "B.mp3");
   C2 = new SoundFile(this, "C2.mp3");
   
-  randomKey = allKeys[(int)random(0, 6)];
+  randomKey = allKeys[(int)random(0, 8)];
 
   //printArray(Serial.list());
   String portName = Serial.list()[5];
@@ -121,7 +124,7 @@ void modeKeys() {
   }
   
   if (currentKey == randomKey) {
-    randomKey = allKeys[(int)random(0, 6)];
+    randomKey = allKeys[(int)random(0, 8)];
     val = 21;
   }
   

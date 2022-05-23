@@ -1,3 +1,5 @@
+// Mini Piano Simulator by Alyona Radkevich
+
 int LED13 = 13;
 
 int buttonC = 9;
@@ -105,7 +107,7 @@ void loop() {
     delay(100);
   } else if (stateA == HIGH) {
 //    pressed = true;
-//    pianoKeyVal = "A";
+    pianoKeyVal = "A";
     delay(100);
   } else if (stateB == HIGH) {
 //    pressed = true;
